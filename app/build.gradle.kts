@@ -1,24 +1,20 @@
 plugins {
-    id("com.android.library")
+    id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     `maven-publish`
 }
 
 android {
-    namespace = "qzwx.ui.library"
+    namespace = "qzwx.app.ui"
     compileSdk = 35
 
     defaultConfig {
+        applicationId = "qzwx.app.ui"
         minSdk = 29
-        
-        // 库模块使用这种方式设置版本
-        libraryVariants.all {
-            this.outputs.all {
-                this as com.android.build.gradle.internal.api.LibraryVariantOutputImpl
-                outputFileName = "qzwx-ui-library-${this@all.name}-1.0.1.aar"
-            }
-        }
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -51,13 +47,6 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
         }
     }
 }
@@ -102,13 +91,13 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "com.github.7qzwx"
                 artifactId = "qui"
-                version = "1.0.1"
+                version = "1.0"
                 
-                from(components["release"])
+                artifact("${layout.buildDirectory.get()}/outputs/apk/release/app-release-unsigned.apk")
                 
                 pom {
-                    name.set("QZWX UI")
-                    description.set("QZWX UI组件库")
+                    name.set("QUI")
+                    description.set("QUI组件库")
                     url.set("https://github.com/7qzwx/QUI")
                     
                     licenses {
@@ -131,11 +120,16 @@ afterEvaluate {
         
         repositories {
             maven {
+                name = "LocalRepo"
+                url = uri("${layout.buildDirectory.get()}/local-repo")
+            }
+            
+            maven {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/7qzwx/QUI")
                 credentials {
-                    username = System.getenv("GITHUB_USER")
-                    password = System.getenv("GITHUB_TOKEN")
+                    username = System.getenv("GITHUB_USER") ?: findProperty("gpr.user") as String? ?: ""
+                    password = System.getenv("GITHUB_TOKEN") ?: findProperty("gpr.key") as String? ?: ""
                 }
             }
         }

@@ -1,4 +1,4 @@
-package qzwx.ui.library
+package qzwx.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +10,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import qzwx.ui.library.navigation.NavGraph
-import qzwx.ui.library.theme.AppTheme
+import qzwx.app.navigation.NavGraph
+import qzwx.app.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {

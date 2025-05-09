@@ -1,6 +1,6 @@
-# QZWX UI 组件库
+# QUI 组件库
 
-QZWX UI是一个基于Jetpack Compose的现代化Android UI组件库，提供了丰富的自定义组件，帮助开发者快速构建美观且功能强大的应用界面。
+QUI是一个基于Jetpack Compose的现代化Android UI组件库，提供了丰富的自定义组件，帮助开发者快速构建美观且功能强大的应用界面。
 
 ## 特性
 
@@ -47,7 +47,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.7qzwx:QUI:1.0.1'
+    implementation 'com.github.7qzwx:qui:1.0'
 }
 ```
 
@@ -55,7 +55,7 @@ dependencies {
 
 ```kotlin
 dependencies {
-    implementation("com.github.7qzwx:qzwx-ui:1.0.1")
+    implementation("com.github.7qzwx:qui:1.0")
 }
 ```
 
