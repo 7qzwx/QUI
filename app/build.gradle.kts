@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     `maven-publish`
@@ -10,12 +10,8 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "qzwx.app.ui"
         minSdk = 29
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
-
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -32,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -47,6 +43,14 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    
+    // 添加发布配置
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
         }
     }
 }
@@ -93,7 +97,7 @@ afterEvaluate {
                 artifactId = "qui"
                 version = "1.0"
                 
-                artifact("${layout.buildDirectory.get()}/outputs/apk/release/app-release-unsigned.apk")
+                from(components["release"])
                 
                 pom {
                     name.set("QUI")
