@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "QZWX_UI"
+rootProject.name = "qzwx-ui-library"
 include(":app")

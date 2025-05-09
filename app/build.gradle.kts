@@ -1,17 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    `maven-publish`
 }
 
 android {
-    namespace = "qzwx.app.ui"
+    namespace = "qzwx.ui.library"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "qzwx.app.ui"
         minSdk = 29
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0.1"
 
@@ -48,6 +47,13 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -82,4 +88,50 @@ dependencies {
     // Debug
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.github.yourusername"
+                artifactId = "qzwx-ui"
+                version = "1.0.1"
+                
+                from(components["release"])
+                
+                pom {
+                    name.set("QZWX UI")
+                    description.set("QZWX UI组件库")
+                    url.set("https://github.com/yourusername/QZWX_UI")
+                    
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                    
+                    developers {
+                        developer {
+                            id.set("yourusername")
+                            name.set("Your Name")
+                            email.set("your.email@example.com")
+                        }
+                    }
+                }
+            }
+        }
+        
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/yourusername/QZWX_UI")
+                credentials {
+                    username = System.getenv("GITHUB_USER")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
 }

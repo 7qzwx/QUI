@@ -4,22 +4,21 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import qzwx.app.ui.qbottombar.QBottomBarPreview
 import qzwx.app.ui.qbutton.QButtonPreview
 import qzwx.app.ui.qcard.QCardPreview
-import qzwx.app.ui.qchip.QChipPreviewContent
 import qzwx.app.ui.qdialog.QDialogPreviewContent
-import qzwx.app.ui.qdivider.QDividerPreviewContent
-import qzwx.app.ui.qgrid.QGridPreviewContent
 import qzwx.app.ui.qimage.QImagePreviewContent
 import qzwx.app.ui.qinput.QTextInputPreview
 import qzwx.app.ui.qlistitem.QListItemPreview
 import qzwx.app.ui.qloading.QLoadingPreviewContent
-import qzwx.app.ui.qslider.AllSlidersPreview
-import qzwx.app.ui.qslider.QBasicSliderPreview
 import qzwx.app.ui.qsnackbar.QSnackbarPreviewContent
 import qzwx.app.ui.qtabs.QTabsPreview
 import qzwx.app.ui.qtopbar.QTopBarPreview
+import qzwx.app.ui.qbottombar.QBottomBarPreview
+import qzwx.app.ui.qslider.AllSlidersPreview
+import qzwx.app.ui.qdivider.QDividerPreviewContent
+import qzwx.app.ui.qchip.QChipPreviewContent
+import qzwx.app.ui.qgrid.QGridPreviewContent
 
 // 定义导航路由
 object NavRoutes {
@@ -159,7 +158,7 @@ fun NavGraph(
                 AllSlidersPreview()
             }
         }
-        
+
         composable(NavRoutes.DIVIDER) {
             NavigationWrapper(
                 title = "分隔符组件 (QDivider)",
@@ -168,7 +167,7 @@ fun NavGraph(
                 QDividerPreviewContent()
             }
         }
-        
+
         composable(NavRoutes.CHIP) {
             NavigationWrapper(
                 title = "标签组件 (QChip)",
@@ -177,7 +176,7 @@ fun NavGraph(
                 QChipPreviewContent()
             }
         }
-        
+
         composable(NavRoutes.GRID) {
             NavigationWrapper(
                 title = "网格组件 (QGrid)",
