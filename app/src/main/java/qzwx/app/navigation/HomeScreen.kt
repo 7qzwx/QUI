@@ -124,6 +124,16 @@ fun HomeScreen(navController: NavHostController) {
                 text = "分隔符组件 (QDivider)",
                 onClick = { navController.navigate(NavRoutes.DIVIDER) }
             )
+            
+            ComponentButton(
+                text = "标签组件 (QChip)",
+                onClick = { navController.navigate(NavRoutes.CHIP) }
+            )
+            
+            ComponentButton(
+                text = "卡片网格组件 (QGrid)",
+                onClick = { navController.navigate(NavRoutes.GRID) }
+            )
         }
     }
 }

@@ -7,8 +7,10 @@ import androidx.navigation.compose.composable
 import qzwx.app.ui.qbottombar.QBottomBarPreview
 import qzwx.app.ui.qbutton.QButtonPreview
 import qzwx.app.ui.qcard.QCardPreview
+import qzwx.app.ui.qchip.QChipPreviewContent
 import qzwx.app.ui.qdialog.QDialogPreviewContent
 import qzwx.app.ui.qdivider.QDividerPreviewContent
+import qzwx.app.ui.qgrid.QGridPreviewContent
 import qzwx.app.ui.qimage.QImagePreviewContent
 import qzwx.app.ui.qinput.QTextInputPreview
 import qzwx.app.ui.qlistitem.QListItemPreview
@@ -35,6 +37,8 @@ object NavRoutes {
     const val BOTTOM_BAR = "bottom_bar"
     const val SLIDER = "slider"
     const val DIVIDER = "divider"
+    const val CHIP = "chip"
+    const val GRID = "grid"
 }
 
 @Composable
@@ -162,6 +166,24 @@ fun NavGraph(
                 navController = navController
             ) {
                 QDividerPreviewContent()
+            }
+        }
+        
+        composable(NavRoutes.CHIP) {
+            NavigationWrapper(
+                title = "标签组件 (QChip)",
+                navController = navController
+            ) {
+                QChipPreviewContent()
+            }
+        }
+        
+        composable(NavRoutes.GRID) {
+            NavigationWrapper(
+                title = "网格组件 (QGrid)",
+                navController = navController
+            ) {
+                QGridPreviewContent()
             }
         }
     }
