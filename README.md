@@ -1,6 +1,6 @@
 # QUI 组件库
 
-QUI是一个基于Jetpack Compose的现代化Android UI组件库，提供了丰富的自定义组件，帮助开发者快速构建美观且功能强大的应用界面。
+QUI是一个基于Jetpack Compose的现代化Android UI组件库，提供了丰富的自定义组件，帮助开发者快速构建美观且功能强大的应用界面。[![](https://jitpack.io/v/7qzwx/QUI.svg)](https://jitpack.io/#7qzwx/QUI)
 
 ## 特性
 
