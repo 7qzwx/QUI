@@ -55,7 +55,7 @@ dependencies {
 
 ```kotlin
 dependencies {
-    implementation("com.github.yourusername:qzwx-ui:1.0.1")
+    implementation("com.github.7qzwx:qzwx-ui:1.0.1")
 }
 ```
 
