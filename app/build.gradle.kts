@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
     `maven-publish`
 }
 
@@ -11,8 +11,14 @@ android {
 
     defaultConfig {
         minSdk = 29
-        versionCode = 1
-        versionName = "1.0.1"
+        
+        // 库模块使用这种方式设置版本
+        libraryVariants.all {
+            this.outputs.all {
+                this as com.android.build.gradle.internal.api.LibraryVariantOutputImpl
+                outputFileName = "qzwx-ui-library-${this@all.name}-1.0.1.aar"
+            }
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -94,8 +100,8 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                groupId = "com.github.yourusername"
-                artifactId = "qzwx-ui"
+                groupId = "com.github.7qzwx"
+                artifactId = "qui"
                 version = "1.0.1"
                 
                 from(components["release"])
@@ -103,7 +109,7 @@ afterEvaluate {
                 pom {
                     name.set("QZWX UI")
                     description.set("QZWX UI组件库")
-                    url.set("https://github.com/yourusername/QZWX_UI")
+                    url.set("https://github.com/7qzwx/QUI")
                     
                     licenses {
                         license {
@@ -114,9 +120,9 @@ afterEvaluate {
                     
                     developers {
                         developer {
-                            id.set("yourusername")
-                            name.set("Your Name")
-                            email.set("your.email@example.com")
+                            id.set("7qzwx")
+                            name.set("QZWX")
+                            email.set("3117965903@qq.com")
                         }
                     }
                 }
@@ -126,7 +132,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/yourusername/QZWX_UI")
+                url = uri("https://maven.pkg.github.com/7qzwx/QUI")
                 credentials {
                     username = System.getenv("GITHUB_USER")
                     password = System.getenv("GITHUB_TOKEN")

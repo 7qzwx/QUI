@@ -47,7 +47,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.yourusername:qzwx-ui:1.0.1'
+    implementation 'com.github.7qzwx:QUI:1.0.1'
 }
 ```
 
